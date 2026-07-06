@@ -24,7 +24,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "task_manager.h"  /* hiwdg 句柄, 供空闲钩子喂狗 */
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -70,6 +70,24 @@ void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackTy
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
+/* ================================================================
+ * vApplicationIdleHook — 空闲钩子, 系统空闲时自动调用
+ * 用途: 独立看门狗 (IWDG) 软件喂狗
+ * 原理: 只要调度器空闲 → 系统正常 → 喂狗
+ *       任何任务死锁 → 空闲不执行 → 看门狗超时复位
+ * ================================================================ */
+void vApplicationIdleHook(void)
+{
+    if (hiwdg.Instance != NULL)
+    {
+        HAL_IWDG_Refresh(&hiwdg);
+    }
+}
 
+/* vApplicationTickHook — 滴答钩子 (预留, 可用于性能计数) */
+void vApplicationTickHook(void)
+{
+    /* 暂不实现, 保留给用户扩展 */
+}
 /* USER CODE END Application */
 

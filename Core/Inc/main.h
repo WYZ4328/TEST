@@ -46,8 +46,14 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+extern UART_HandleTypeDef huart1;
 /* USER CODE END EM */
+
+/* Exported types ------------------------------------------------------------*/
+/* Exported constants --------------------------------------------------------*/
+/* USER CODE BEGIN EC */
+
+/* USER CODE END EC */
 
 /* Exported functions prototypes ---------------------------------------------*/
 void Error_Handler(void);
