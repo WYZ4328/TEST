@@ -1,0 +1,45 @@
+# STM32CubeIDE / EWARM build outputs
+Debug/
+Release/
+EWARM/*/Debug/
+EWARM/*/Release/
+EWARM/*/settings/
+
+# Object files
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.out
+
+# Compiled libraries
+*.a
+*.lib
+*.dll
+*.so
+
+# Precompiled headers
+*.gch
+*.pch
+
+# Linker output
+*.ilk
+*.exp
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.DS_Store
+
+# STM32CubeIDE specific
+.settings/
+.project
+.cproject
+*.launch
+mxproject
