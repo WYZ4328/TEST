@@ -45,7 +45,6 @@
 
 /* Private variables ---------------------------------------------------------*/
 DMA_HandleTypeDef hdma_memtomem_dma1_channel1;
-osThreadId defaultTaskHandle;
 /* USER CODE BEGIN PV */
 UART_HandleTypeDef huart1;
 /* USER CODE END PV */
@@ -162,11 +161,6 @@ int main(void)
   /* add queues, ... */
   /* USER CODE END RTOS_QUEUES */
 
-  /* Create the thread(s) */
-  /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
@@ -280,6 +274,7 @@ static void MX_USART1_UART_Init(void)
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void const * argument)
 {
+  (void)argument;
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
